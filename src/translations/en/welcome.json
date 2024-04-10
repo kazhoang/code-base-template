@@ -1,5 +1,10 @@
 {
   "title": "Welcome on",
-  "subtitle": "The $t(common:appName.full)",
-  "description": "Do you want to discover some features? Just click on one of the three buttons at the bottom of the screen. The first allows you to call a REST API. The second lets you change the theme color. And the third allows you to change the language."
+  "subtitle": "$t(common:appName.full)",
+  "beforeStart": "Ipsum is simply dummy text of the printing and typesetting industry",
+  "invitationCode": "Invitation Code ",
+  "clickHereToCopy": "Click here to copy",
+  "activeAccount": "Active Account",
+  "invalidCode": "Invalid Code",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
 }

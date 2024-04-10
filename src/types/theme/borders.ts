@@ -22,7 +22,12 @@ export type BorderRadius = {
 	};
 };
 
-type BorderWidthKeys = `w_${ArrayValue<typeof config.borders.widths>}`;
+type BorderWidthKeys =
+	| `w_${ArrayValue<typeof config.borders.widths>}`
+	| `top_${ArrayValue<typeof config.borders.widths>}`
+	| `bottom_${ArrayValue<typeof config.borders.widths>}`
+	| `left_${ArrayValue<typeof config.borders.widths>}`
+	| `right_${ArrayValue<typeof config.borders.widths>}`;
 
 export type BorderWidths = {
 	[key in BorderWidthKeys]: {

@@ -1,52 +1,57 @@
 import { config } from '@/theme/_config';
 
 import type { Gutters } from '@/types/theme/gutters';
+import {
+	moderateScale,
+	ResponsiveHeight,
+	ResponsiveWidth,
+} from '@/types/theme/responsive';
 import type { ViewStyle } from 'react-native';
 
 export const generateGutters = (): Gutters => {
 	return config.gutters.reduce((acc, curr) => {
 		return Object.assign(acc, {
 			[`margin_${curr}`]: {
-				margin: curr,
+				margin: moderateScale(curr),
 			},
 			[`marginBottom_${curr}`]: {
-				marginBottom: curr,
+				marginBottom: ResponsiveHeight(curr),
 			},
 			[`marginTop_${curr}`]: {
-				marginTop: curr,
+				marginTop: ResponsiveHeight(curr),
 			},
 			[`marginRight_${curr}`]: {
-				marginRight: curr,
+				marginRight: ResponsiveWidth(curr),
 			},
 			[`marginLeft_${curr}`]: {
-				marginLeft: curr,
+				marginLeft: ResponsiveWidth(curr),
 			},
 			[`marginVertical_${curr}`]: {
-				marginVertical: curr,
+				marginVertical: ResponsiveHeight(curr),
 			},
 			[`marginHorizontal_${curr}`]: {
-				marginHorizontal: curr,
+				marginHorizontal: ResponsiveWidth(curr),
 			},
 			[`padding_${curr}`]: {
-				padding: curr,
+				padding: moderateScale(curr),
 			},
 			[`paddingBottom_${curr}`]: {
-				paddingBottom: curr,
+				paddingBottom: ResponsiveHeight(curr),
 			},
 			[`paddingTop_${curr}`]: {
-				paddingTop: curr,
+				paddingTop: ResponsiveHeight(curr),
 			},
 			[`paddingRight_${curr}`]: {
-				paddingRight: curr,
+				paddingRight: ResponsiveWidth(curr),
 			},
 			[`paddingLeft_${curr}`]: {
-				paddingLeft: curr,
+				paddingLeft: ResponsiveWidth(curr),
 			},
 			[`paddingVertical_${curr}`]: {
-				paddingVertical: curr,
+				paddingVertical: ResponsiveHeight(curr),
 			},
 			[`paddingHorizontal_${curr}`]: {
-				paddingHorizontal: curr,
+				paddingHorizontal: ResponsiveWidth(curr),
 			},
 		});
 	}, {} as Gutters);

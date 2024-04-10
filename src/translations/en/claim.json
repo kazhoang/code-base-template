@@ -1,0 +1,20 @@
+{
+  "claim": "Claim",
+  "dashboard": "Dashboard",
+  "claimBalance": "Claim Balance",
+  "bonusFromInvitation": "Bonus From Invitation",
+  "unlockBalance": "Unlock Balance",
+  "mergedBalance": "Merged Balance",
+  "invited": "Invited",
+  "users": "{{value}} users",
+  "networkInfo": "Network Information",
+  "landingPage": "Landing Page ",
+  "blockchainStatus": "Blockchain Status",
+  "blockchainExplorer1": "Blockchain Explorer 1",
+  "blockchainExplorer2": "Blockchain Explorer 2",
+  "yourInvitationCode": "Your Invitation Code: {{value}}",
+  "online": "🟢",
+  "offline": "🔴",
+  "displayValue": "{{value}} $",
+  "availableToClaim": "Available To Claim"
+}

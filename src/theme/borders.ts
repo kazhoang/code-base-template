@@ -6,6 +6,7 @@ import type {
 	BorderRadius,
 } from '@/types/theme/borders';
 import type { UnionConfiguration } from '@/types/theme/config';
+import { moderateScale } from '@/types/theme/responsive';
 import type { ViewStyle } from 'react-native';
 
 /**
@@ -32,7 +33,7 @@ export const generateBorderRadius = () => {
 	return config.borders.radius.reduce((acc, radius) => {
 		return Object.assign(acc, {
 			[`rounded_${radius}`]: {
-				borderRadius: radius,
+				borderRadius: moderateScale(radius),
 			},
 		});
 	}, {} as BorderRadius);
@@ -44,20 +45,20 @@ export const generateBorderRadius = () => {
 export const generateBorderWidths = () => {
 	return config.borders.widths.reduce((acc, width) => {
 		return Object.assign(acc, {
-			[`${width}`]: {
-				borderWidth: width,
+			[`w_${width}`]: {
+				borderWidth: moderateScale(width),
 			},
 			[`top_${width}`]: {
-				borderTopWidth: width,
+				borderTopWidth: moderateScale(width),
 			},
 			[`bottom_${width}`]: {
-				borderBottomWidth: width,
+				borderBottomWidth: moderateScale(width),
 			},
 			[`left_${width}`]: {
-				borderLeftWidth: width,
+				borderLeftWidth: moderateScale(width),
 			},
 			[`right_${width}`]: {
-				borderRightWidth: width,
+				borderRightWidth: moderateScale(width),
 			},
 		});
 	}, {} as BorderWidths);

@@ -53,8 +53,15 @@ module.exports = {
 		'no-void': 'off',
 		'react/jsx-props-no-spreading': 'off',
 		'import/prefer-default-export': 'off',
-		'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+		'import/no-extraneous-dependencies': 'off',
 		'react/display-name': 'off',
+		'@typescript-eslint/no-unsafe-member-access': 'off',
+		'@typescript-eslint/no-misused-promises': 'off',
+		'no-param-reassign': 'off',
+		'import/order': 'off',
+		'@typescript-eslint/no-unsafe-call': 'off',
+		'@typescript-eslint/no-unsafe-assignment': 'off',
+		'@typescript-eslint/unbound-method': 'off',
 		'prettier/prettier': [
 			'error',
 			{

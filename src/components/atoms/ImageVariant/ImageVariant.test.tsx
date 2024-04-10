@@ -6,8 +6,7 @@ import sourceLight from '@/theme/assets/images/tom_light.png';
 import sourceDark from '@/theme/assets/images/tom_dark.png';
 
 import { isImageSourcePropType } from '@/types/guards/image';
-
-import ImageVariant from './ImageVariant';
+import ImageVariant from '.';
 
 describe('ImageVariant component should render correctly', () => {
 	let storage: MMKV;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/514072157/code_base_template.react-native-mmkv.main.iml" filepath="$PROJECT_DIR$/.idea/modules/514072157/code_base_template.react-native-mmkv.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1863792728/code_base_template.react-native-reanimated.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1863792728/code_base_template.react-native-reanimated.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1235199563/code_base_template.react-native-screens.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1235199563/code_base_template.react-native-screens.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1167614373/code_base_template.shopify_react-native-skia.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1167614373/code_base_template.shopify_react-native-skia.main.iml" />
+    </modules>
+  </component>
+</project>

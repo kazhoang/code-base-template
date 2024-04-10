@@ -12,6 +12,16 @@ const colorsLight = {
 	purple500: '#44427D',
 	purple100: '#E1E1EF',
 	purple50: '#1B1A23',
+	pink500: '#C35386',
+	success: '#52c41a',
+	card: '#4D4D4D',
+	dark: '#162F46',
+	gradientBackground1: 'magenta',
+	gradientBackground2: 'cyan',
+	gradientBackground3: 'yellow',
+	gradientTextStart: '#FC466B',
+	gradientTextEnd: '#3F5EFB',
+	infoClaimText: '#FBD786',
 } as const;
 
 const colorsDark = {
@@ -24,9 +34,19 @@ const colorsDark = {
 	purple500: '#A6A4F0',
 	purple100: '#252732',
 	purple50: '#1B1A23',
+	pink500: '#C35386',
+	success: '#389e0d',
+	card: '#303030',
+	dark: '#000000',
+	gradientBackground1: 'cyan',
+	gradientBackground2: 'magenta',
+	gradientBackground3: 'yellow',
+	gradientTextStart: '#ce3df3',
+	gradientTextEnd: 'cyan',
+	infoClaimText: '#A6A4F0',
 } as const;
 
-const sizes = [12, 16, 24, 32, 40, 80] as const;
+const sizes = [10, 12, 14, 16, 20, 24, 32, 40, 80] as const;
 
 export const config = {
 	colors: colorsLight,
@@ -38,7 +58,7 @@ export const config = {
 	backgrounds: colorsLight,
 	borders: {
 		widths: [1, 2],
-		radius: [4, 16],
+		radius: [4, 8, 16, 20, 36],
 		colors: colorsLight,
 	},
 	navigationColors: {

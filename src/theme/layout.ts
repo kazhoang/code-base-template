@@ -72,10 +72,16 @@ export default {
 	right0: {
 		right: 0,
 	},
+	right16: {
+		right: 16,
+	},
 	z1: {
 		zIndex: 1,
 	},
 	z10: {
 		zIndex: 10,
+	},
+	z100: {
+		zIndex: 100,
 	},
 } as const satisfies Record<string, ViewStyle>;
