@@ -24,7 +24,7 @@ module.exports = {
 		},
 		ecmaVersion: 'latest',
 		sourceType: 'module',
-		tsconfigRootDir: '.',
+		tsconfigRootDir: __dirname,
 		project: ['./tsconfig.json'],
 	},
 	settings: {
@@ -35,7 +35,7 @@ module.exports = {
 			typescript: {},
 		},
 		react: {
-			version: '18.x',
+			version: 'detect',
 		},
 	},
 	rules: {
@@ -45,7 +45,11 @@ module.exports = {
 		quotes: ['error', 'single'],
 		'object-curly-spacing': ['error', 'always'],
 		'array-bracket-spacing': ['error', 'never'],
-		'react/require-default-props': ['error'],
+		// React 19 drops defaultProps on function components, so use default parameters
+		'react/require-default-props': ['error', { functions: 'defaultArguments' }],
+		// Removed in typescript-eslint v8 but still enabled by airbnb-typescript
+		'@typescript-eslint/lines-between-class-members': 'off',
+		'@typescript-eslint/no-throw-literal': 'off',
 		'react/default-props-match-prop-types': ['error'],
 		'react/sort-prop-types': ['error'],
 		'react/no-array-index-key': 'off',

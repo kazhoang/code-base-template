@@ -1,19 +1,11 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json",
+  "extends": "@react-native/typescript-config",
   "compilerOptions": {
     "types": ["jest", "node"],
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "./src/**/*",
-    "./src/@types/**/*",
-    "index.d.ts",
-    ".eslintrc.js",
-    "jest.setup.js",
-    "jest.config.js",
-    "babel.config.js",
-    "index.js"
-  ]
+  "include": ["src/**/*", "index.d.ts", "index.js", "jest.setup.js"],
+  "exclude": ["**/node_modules", "**/Pods"]
 }

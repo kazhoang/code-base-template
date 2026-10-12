@@ -22,7 +22,7 @@ function ImageVariant({ source: defaultSource, ...props }: Props) {
 		if (variant !== 'default' && props[sourceVariant]) {
 			try {
 				return props[sourceVariant];
-			} catch (e) {
+			} catch {
 				return defaultSource;
 			}
 		}

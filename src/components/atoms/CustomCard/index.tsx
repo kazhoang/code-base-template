@@ -93,8 +93,4 @@ function CustomCard(props: CustomCardProps) {
 	);
 }
 
-CustomCard.defaultProps = {
-	title: '',
-};
-
 export default CustomCard;

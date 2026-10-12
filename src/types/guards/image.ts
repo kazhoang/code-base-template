@@ -1,4 +1,4 @@
-import { ImageSourcePropType } from 'react-native/Libraries/Image/Image';
+import type { ImageSourcePropType } from 'react-native';
 
 export const isImageSourcePropType = (
 	value: unknown,

@@ -4,7 +4,7 @@ import {
 	screen,
 	waitFor,
 } from '@testing-library/react-native';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV, type MMKV } from 'react-native-mmkv';
 
 import { ThemeProvider } from '@/theme';
 import CopyButton from '.';
@@ -14,7 +14,7 @@ describe('Brand component should render correctly', () => {
 	let storage: MMKV;
 
 	beforeAll(() => {
-		storage = new MMKV();
+		storage = createMMKV();
 	});
 
 	const value = 'testValue';
@@ -31,9 +31,9 @@ describe('Brand component should render correctly', () => {
 		const button = screen.getByTestId('copy-button');
 
 		// Attempt to press the button again
-		expect(button.props.enabled).toBe(true);
+		expect(button).toBeEnabled();
 		fireEvent.press(button);
-		expect(button.props.enabled).toBe(false);
+		expect(button).toBeDisabled();
 	});
 
 	test('copy with value props', async () => {

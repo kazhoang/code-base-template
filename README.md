@@ -1,47 +1,91 @@
-# React Native Template 🚀
+# React Native Template
 
-## Features ✨
+A starter template I use for new React Native apps. It runs on **React Native 0.87** with the **New Architecture** (Fabric, TurboModules, bridgeless) enabled on both iOS and Android, and comes with navigation, data fetching, theming, i18n, storage and a small set of animated UI components already wired up.
 
 ## ✨ Features
 
-- **Dynamic Navigation**: Seamlessly navigate through your app with speed and agility using React Navigation.
-  
-- **Effortless Data Fetching️**: Fetch data effortlessly with TanStackQuery's built-in caching mechanisms.
+- **New Architecture by default**: Fabric renderer, TurboModules and Hermes on iOS and Android
+- **Navigation**: React Navigation 7 stack navigator with typed routes
+- **Data fetching**: TanStack Query with a preconfigured [ky](https://github.com/sindresorhus/ky) HTTP client
+- **State management**: easy-peasy store with typed hooks
+- **Theming**: light/dark themes with generated layout, gutters, fonts and backgrounds, persisted in MMKV
+- **Storage**: [react-native-mmkv](https://github.com/mrousavy/react-native-mmkv) v4 (Nitro Modules)
+- **i18n**: i18next + react-i18next (English and French)
+- **Animations & graphics**: Reanimated 4, Skia, Lottie and SVG, used in the sample components
+- **Auth example**: Google Sign-In flow, including silent sign-in on startup
+- **Permissions**: react-native-permissions with App Tracking Transparency as an example
+- **Environment variables**: `.env` values inlined at build time
+- **Testing**: Jest + React Native Testing Library with mocks for Reanimated, Gesture Handler, MMKV, Skia, Google Sign-In and Clipboard
 
-- **Global Accessibility**: Add multilingual support effortlessly with React i18next for inclusivity.
+## 🧱 Tech stack
 
-- **Stylish Theming**: Elevate your app's visual appeal with easy-to-maintain multiple themes.
+| Area | Library |
+|---|---|
+| Core | React Native 0.87, React 19.2, TypeScript |
+| Navigation | @react-navigation/native 7, @react-navigation/stack 7 |
+| Data | @tanstack/react-query 5, ky 2 |
+| State | easy-peasy 6 |
+| Storage | react-native-mmkv 4 |
+| UI & animation | react-native-reanimated 4, react-native-worklets, @shopify/react-native-skia 2, lottie-react-native 7, react-native-svg, react-native-gesture-handler 3 |
+| Native features | @react-native-google-signin/google-signin 16, react-native-permissions 5, @react-native-clipboard/clipboard, react-native-avoid-softinput |
+| Testing | Jest 29, @testing-library/react-native 13 |
 
-- **Secure Data Storage**: Keep your data safe with React Native MMKV's efficient key-value storage.
+## 📁 Project structure
 
-- **Seamless Environment Configuration**: Smoothly handle environment variables for hassle-free development.
+```
+src/
+├── components/      # atoms / molecules / template (atomic design)
+├── navigators/      # stack navigator + navigation helpers
+├── screens/         # Startup, SignUp, Welcome, Claim
+├── services/        # ky instance + API calls
+├── stores/          # easy-peasy store and models
+├── theme/           # theme config, ThemeProvider, assets
+├── translations/    # en / fr
+├── types/           # navigation, theme and guard types
+└── utils/
+```
 
-## Dependencies 🛠️
+Imports use the `@/` alias for `src/`, e.g. `import { useTheme } from '@/theme'`.
 
-- **React Native (0.73.6)**: Build native apps with the power of React.
+## 🚀 Getting started
 
-- **React (18.2.0)**: Empower your native app with the flexibility of React.
+### Requirements
 
-- **React Native MMKV (^2.12.1)**: Efficient and compact mobile key-value storage solution.
+- Node.js >= 22.11
+- Yarn 1.x
+- Xcode 16+ and CocoaPods (iOS)
+- Android Studio with JDK 17 (Android)
 
-- **React Navigation (^6.1.10)**: Seamlessly navigate through your app with speed and agility.
+### Install
 
-- **TanStack Query (^5.20.5)**: Simplify data fetching tasks with built-in caching mechanisms.
+```bash
+git clone https://github.com/kazhoang/code-base-template.git
+cd code-base-template
+yarn
+bundle install
+yarn pod
+```
 
-- **Ky (^1.2.0)**: Make HTTP requests with ease.
+### Run
 
-- **react-native-avoid-softinput (^5.0.0)**: Prevent soft input from appearing when focusing on text inputs, ensuring a smoother user experience.
+```bash
+yarn start      # Metro
+yarn ios        # iOS simulator
+yarn android    # Android emulator / device
+```
 
-- **react-native-svg (^15.1.0)**: Harness the power of SVG (Scalable Vector Graphics) in your React Native applications, enabling high-quality and responsive vector graphics rendering.
+### Other scripts
 
-- **@shopify/react-native-skia (^1.0.4)**: Utilize Skia, a powerful graphics engine, in your React Native applications for enhanced performance and rendering capabilities.
+```bash
+yarn test         # unit tests
+yarn type-check   # TypeScript
+yarn lint         # ESLint
+yarn clean        # reinstall node_modules and pods
+```
 
-- **@react-native-google-signin/google-signin (^11.0.0)**: Integrate Google Sign-In functionality seamlessly into your React Native applications, allowing users to sign in with their Google accounts effortlessly.
+## ⚙️ Configuration
 
-- **@react-native-clipboard/clipboard (^1.13.2)**: Enable clipboard functionality in your React Native applications, facilitating the copying and pasting of text and data with ease.
-
-- **easy-peasy (^6.0.4)**: Simplify state management in your React applications with Easy Peasy, a robust and flexible state management library based on Redux.
-
-- **lottie-react-native (^6.0.4)**: Add stunning animations to your React Native applications with Lottie, a lightweight and scalable animation library.
-
-- **react-native-linear-gradient (^2.8.3)**: Enhance the visual appeal of your UI components with gradient backgrounds and effects in React Native applications.
+- **API URL**: set `API_URL` in `.env`.
+- **Google Sign-In**: replace `android/app/google-services.json`, `ios/code_base_template/GoogleService-Info.plist` and the `CFBundleURLSchemes` entry in `ios/code_base_template/Info.plist` with your own Firebase/Google Cloud project.
+- **Permissions**: iOS permission handlers are listed in `setup_permissions([...])` in `ios/Podfile`. Add the matching usage descriptions to `Info.plist`.
+- **Renaming the app**: update `app.json`, the iOS target/bundle identifier and the Android `applicationId`/`namespace`.

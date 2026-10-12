@@ -6,9 +6,13 @@ type CustomTextInputProps = TextInputProps & {
 	centerText?: boolean;
 	error?: string;
 };
-function CustomTextInput(props: CustomTextInputProps) {
+function CustomTextInput({
+	customStyle = {},
+	centerText = false,
+	error = '',
+	...rest
+}: CustomTextInputProps) {
 	const { gutters, components, fonts, colors } = useTheme();
-	const { customStyle, centerText, error, ...rest } = props;
 
 	return (
 		<View style={customStyle}>
@@ -29,11 +33,5 @@ function CustomTextInput(props: CustomTextInputProps) {
 		</View>
 	);
 }
-
-CustomTextInput.defaultProps = {
-	customStyle: {},
-	centerText: false,
-	error: '',
-};
 
 export default CustomTextInput;

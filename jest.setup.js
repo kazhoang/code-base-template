@@ -1,18 +1,21 @@
-// import 'whatwg-fetch';
 import 'react-native-gesture-handler/jestSetup';
-import '@shopify/react-native-skia/jestSetup';
-import '@testing-library/jest-native/extend-expect';
-import '@react-native-google-signin/google-signin/jest/build/setup';
 
-jest.mock('react-native-reanimated', () =>
+// RNGH 3 installs worklet bindings on the UI runtime, which doesn't exist under Jest
+jest.mock('react-native-worklets', () => ({
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-	require('react-native-reanimated/mock'),
-);
+	...jest.requireActual('react-native-worklets'),
+	getUIRuntimeHolder: () => ({}),
+}));
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+require('react-native-reanimated').setUpTests();
 
 jest.mock('@react-native-clipboard/clipboard', () =>
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 	require('@react-native-clipboard/clipboard/jest/clipboard-mock'),
 );
 
-// Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+// MMKV v4 uses an in-memory mock under Jest, but still imports Nitro at load time
+jest.mock('react-native-nitro-modules', () => ({
+	NitroModules: { createHybridObject: jest.fn() },
+}));

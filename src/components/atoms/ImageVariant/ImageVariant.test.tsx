@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react-native';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV, type MMKV } from 'react-native-mmkv';
 
 import { ThemeProvider } from '@/theme';
 import sourceLight from '@/theme/assets/images/tom_light.png';
@@ -12,7 +12,7 @@ describe('ImageVariant component should render correctly', () => {
 	let storage: MMKV;
 
 	beforeAll(() => {
-		storage = new MMKV();
+		storage = createMMKV();
 	});
 
 	test('with only default image and dark variant. Should return default source', () => {

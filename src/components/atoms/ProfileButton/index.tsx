@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { ViewStyle } from 'react-native';
 import LottieView from 'lottie-react-native';
+import profileAnimation from '@/theme/assets/images/profile.json';
 import { useTheme } from '@/theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -9,7 +10,7 @@ interface AnimatedButtonProps {
 	customStyle?: ViewStyle | ViewStyle[];
 }
 
-function ProfileButton({ onPress, customStyle }: AnimatedButtonProps) {
+function ProfileButton({ onPress, customStyle = {} }: AnimatedButtonProps) {
 	const animationRef = useRef<LottieView>(null);
 	const { colors, components } = useTheme();
 
@@ -17,7 +18,7 @@ function ProfileButton({ onPress, customStyle }: AnimatedButtonProps) {
 		<TouchableOpacity onPress={onPress} style={customStyle}>
 			<LottieView
 				ref={animationRef}
-				source={require('@/theme/assets/images/profile.json')}
+				source={profileAnimation}
 				autoPlay
 				loop={false}
 				colorFilters={[
@@ -29,9 +30,5 @@ function ProfileButton({ onPress, customStyle }: AnimatedButtonProps) {
 		</TouchableOpacity>
 	);
 }
-
-ProfileButton.defaultProps = {
-	customStyle: {},
-};
 
 export default ProfileButton;

@@ -1,6 +1,6 @@
 import { Button, Text, View } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV, type MMKV } from 'react-native-mmkv';
 
 import { useTheme, ThemeProvider } from '@/theme';
 
@@ -22,7 +22,7 @@ describe('ThemeProvider', () => {
 	let storage: MMKV;
 
 	beforeEach(() => {
-		storage = new MMKV();
+		storage = createMMKV();
 	});
 
 	it('initializes with the default theme when no theme is defined in storage', () => {

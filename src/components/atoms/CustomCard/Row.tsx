@@ -8,7 +8,7 @@ type RowProps = {
 	customStyle?: ViewStyle;
 };
 
-function Row({ field, value, customStyle }: RowProps) {
+function Row({ field, value, customStyle = {} }: RowProps) {
 	const { fonts, gutters, layout } = useTheme();
 
 	return (
@@ -34,7 +34,4 @@ function Row({ field, value, customStyle }: RowProps) {
 	);
 }
 
-Row.defaultProps = {
-	customStyle: {},
-};
 export default Row;

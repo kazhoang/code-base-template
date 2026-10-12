@@ -24,7 +24,7 @@ type GradientTextProps = {
 	style?: ViewStyle;
 };
 
-function GradientText({ text, fontSize = 32, style }: GradientTextProps) {
+function GradientText({ text, fontSize = 38, style = {} }: GradientTextProps) {
 	const { colors } = useTheme();
 	const initColorLeft = colors.gradientTextStart;
 	const initColorRight = colors.gradientTextEnd;
@@ -83,8 +83,4 @@ function GradientText({ text, fontSize = 32, style }: GradientTextProps) {
 	);
 }
 
-GradientText.defaultProps = {
-	fontSize: 38,
-	style: {},
-};
 export default GradientText;

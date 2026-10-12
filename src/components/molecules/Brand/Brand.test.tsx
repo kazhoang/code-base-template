@@ -1,6 +1,6 @@
 import { ViewStyle } from 'react-native';
 import { render, screen } from '@testing-library/react-native';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV, type MMKV } from 'react-native-mmkv';
 
 import { ThemeProvider } from '@/theme';
 import Brand from '.';
@@ -10,7 +10,7 @@ describe('Brand component should render correctly', () => {
 	let storage: MMKV;
 
 	beforeAll(() => {
-		storage = new MMKV();
+		storage = createMMKV();
 	});
 
 	test('with default props if not precises (height: 200, width: 200, resizeMode: "contain")', () => {
@@ -25,8 +25,8 @@ describe('Brand component should render correctly', () => {
 		const wrapper = screen.getByTestId('brand-img-wrapper');
 		const img = screen.getByTestId('brand-img');
 
-		const brandHeight: number = moderateScale(200 as number);
-		const brandWidth: number = moderateScale(200 as number);
+		const brandHeight: number = moderateScale(200);
+		const brandWidth: number = moderateScale(200);
 
 		// Props set correctly
 		expect((wrapper.props.style as ViewStyle).height).toBe(brandHeight);
@@ -46,8 +46,8 @@ describe('Brand component should render correctly', () => {
 		const wrapper = screen.getByTestId('brand-img-wrapper');
 		const img = screen.getByTestId('brand-img');
 
-		const brandHeight: number = moderateScale(100 as number);
-		const brandWidth: number = moderateScale(100 as number);
+		const brandHeight: number = moderateScale(100);
+		const brandWidth: number = moderateScale(100);
 
 		expect((wrapper.props.style as ViewStyle).height).toBe(brandHeight);
 		expect((wrapper.props.style as ViewStyle).width).toBe(brandWidth);

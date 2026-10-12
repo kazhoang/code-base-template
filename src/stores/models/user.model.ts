@@ -1,8 +1,9 @@
 import { navigate } from '@/navigators/NavigationUtils';
 import { RouteName } from '@/types/navigation';
 import {
-	User,
+	type User,
 	GoogleSignin,
+	isSuccessResponse,
 	statusCodes,
 } from '@react-native-google-signin/google-signin';
 import { Action, Thunk, action, thunk } from 'easy-peasy';
@@ -24,7 +25,7 @@ export interface UserActions {
 
 export interface UserThunks {
 	signInWithGoogle: Thunk<this>;
-	getCurrentUserInfo: Thunk<this, void, any, any, Promise<boolean>>;
+	getCurrentUserInfo: Thunk<this, void, unknown, object, Promise<boolean>>;
 }
 
 export interface UserModel extends UserState, UserActions, UserThunks {}
@@ -51,13 +52,16 @@ export const userModel: UserModel = {
 		try {
 			actions.setIsSigning(true);
 			await GoogleSignin.hasPlayServices();
-			const userInfo = await GoogleSignin.signIn();
+			const response = await GoogleSignin.signIn();
+			actions.setIsSigning(false);
 
-			console.log('userInfo', userInfo);
+			// User closed the Google sign-in sheet
+			if (!isSuccessResponse(response)) {
+				return;
+			}
 
 			// Store Actions
-			actions.setUser(userInfo);
-			actions.setIsSigning(false);
+			actions.setUser(response.data);
 
 			// Navigate
 			navigate(RouteName.Welcome);
@@ -70,17 +74,21 @@ export const userModel: UserModel = {
 	getCurrentUserInfo: thunk(async actions => {
 		try {
 			actions.setIsSigning(true);
-			const userInfo = await GoogleSignin.signInSilently();
-			console.log('userInfo', userInfo);
+			const response = await GoogleSignin.signInSilently();
+			actions.setIsSigning(false);
+
+			// No previously signed-in Google account on this device
+			if (response.type !== 'success') {
+				return false;
+			}
 
 			// Store Actions
-			actions.setUser(userInfo);
-			actions.setIsSigning(false);
+			actions.setUser(response.data);
 
 			// Navigate
 			navigate(RouteName.Claim);
 			return true;
-		} catch (error) {
+		} catch {
 			actions.setIsSigning(false);
 			return false;
 		}

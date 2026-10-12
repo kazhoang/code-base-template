@@ -1,11 +1,12 @@
 import {
 	createContext,
-	PropsWithChildren,
+	type ReactNode,
 	useEffect,
 	useMemo,
 	useState,
 } from 'react';
 
+import { DefaultTheme } from '@react-navigation/native';
 import { config } from '@/theme/_config';
 import {
 	generateFontSizes,
@@ -38,9 +39,10 @@ type Context = Theme & {
 
 export const ThemeContext = createContext<Context | undefined>(undefined);
 
-type Props = PropsWithChildren<{
+type Props = {
+	children: ReactNode;
 	storage: MMKV;
-}>;
+};
 
 function ThemeProvider({ children, storage }: Props) {
 	// Current theme variant
@@ -91,6 +93,7 @@ function ThemeProvider({ children, storage }: Props) {
 		return {
 			dark: variant === 'dark',
 			colors: fullConfig.navigationColors,
+			fonts: DefaultTheme.fonts,
 		};
 	}, [variant, fullConfig.navigationColors]);
 

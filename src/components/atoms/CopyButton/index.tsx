@@ -19,7 +19,7 @@ interface ICopyButtonProps {
 	value: string;
 }
 
-function CopyButton({ customStyle, value }: ICopyButtonProps) {
+function CopyButton({ customStyle = {}, value }: ICopyButtonProps) {
 	const { colors } = useTheme();
 	const baseColor = colors.purple500;
 	const activeColor = colors.red500;
@@ -79,9 +79,5 @@ function CopyButton({ customStyle, value }: ICopyButtonProps) {
 		</Animated.View>
 	);
 }
-
-CopyButton.defaultProps = {
-	customStyle: {},
-};
 
 export default CopyButton;

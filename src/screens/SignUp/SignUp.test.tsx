@@ -5,7 +5,7 @@ import {
 	screen,
 	waitFor,
 } from '@testing-library/react-native';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV, type MMKV } from 'react-native-mmkv';
 import { I18nextProvider } from 'react-i18next';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -30,7 +30,7 @@ describe('Example screen should render correctly', () => {
 	});
 
 	beforeAll(() => {
-		storage = new MMKV();
+		storage = createMMKV();
 	});
 
 	test('the user change the theme', () => {
@@ -77,7 +77,7 @@ describe('Example screen should render correctly', () => {
 		expect(store.getState().userModel.user).not.toBeDefined();
 		const button = screen.getByTestId('google-signin');
 		expect(button).toBeDefined();
-		await act(() => {
+		act(() => {
 			fireEvent.press(button);
 		});
 

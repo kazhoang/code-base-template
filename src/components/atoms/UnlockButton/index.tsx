@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useTheme } from '@/theme';
 import LottieView from 'lottie-react-native';
+import buttonAnimation from '@/theme/assets/images/button.json';
 
 type UnlockButtonProps = {
 	onPress: () => void;
@@ -18,15 +19,14 @@ type UnlockButtonProps = {
 	timeUnlock?: number | Date; // assuming timeUnlock is in seconds
 };
 
-function UnlockButton(props: UnlockButtonProps) {
+function UnlockButton({
+	onPress,
+	loading = false,
+	customStyle = {},
+	textStyle = {},
+	timeUnlock = 0,
+}: UnlockButtonProps) {
 	const { components, fonts, backgrounds, colors, layout } = useTheme();
-	const {
-		onPress,
-		loading = false,
-		customStyle,
-		textStyle,
-		timeUnlock,
-	} = props;
 
 	const [currentTime, setCurrentTime] = useState<number>(Date.now());
 
@@ -102,7 +102,7 @@ function UnlockButton(props: UnlockButtonProps) {
 			<LottieView
 				autoPlay
 				loop
-				source={require('@/theme/assets/images/button.json')}
+				source={buttonAnimation}
 				style={components.lottieClaim}
 			/>
 			<Text
@@ -121,12 +121,5 @@ function UnlockButton(props: UnlockButtonProps) {
 		</TouchableOpacity>
 	);
 }
-
-UnlockButton.defaultProps = {
-	loading: false,
-	customStyle: {},
-	textStyle: {},
-	timeUnlock: 0,
-};
 
 export default UnlockButton;
